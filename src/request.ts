@@ -35,9 +35,10 @@ export class Request {
     }).then(res => {
       return new Promise((resolve, reject) => {
         res.body.on("data", chunk => {
-          const json = JSON.parse(chunk.toString());
-          // console.log(json);
-          cb(json);
+          const responses = chunk.toString().split(/[\r\n]+/);
+          responses.forEach((element: string) => {
+            cb(JSON.parse(element));
+          });
         });
 
         res.body.on("error", err => {
