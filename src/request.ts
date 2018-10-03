@@ -17,7 +17,12 @@ export class Request {
     return json;
   }
 
-  private async fetchStream(method: string, path: string, key: string) {
+  private async fetchStream(
+    method: string,
+    path: string,
+    key: string,
+    cb: (res: any) => void
+  ) {
     fetch(path, {
       headers: {
         "Accept-Datetime-Format": "RFC3339",
@@ -31,7 +36,8 @@ export class Request {
       return new Promise((resolve, reject) => {
         res.body.on("data", chunk => {
           const json = JSON.parse(chunk.toString());
-          console.log(json);
+          // console.log(json);
+          cb(json);
         });
 
         res.body.on("error", err => {
@@ -55,22 +61,7 @@ export class Request {
   post(path: string, key: string, body?: {}) {
     return this.fetch("POST", path, key, body);
   }
-  stream(path: string, key: string) {
-    return this.fetchStream("GET", path, key);
+  stream(path: string, key: string, cb: (res: any) => void) {
+    return this.fetchStream("GET", path, key, cb);
   }
-
-  //     });
-  //     // .then(res => res.buffer())
-  //     // .then(buffer => console.log(buffer));
-  //     // .then(response => response.body)
-  //     // .then(body => {
-  //     //   const reader = body.getReader();
-  //     // .then(response => {
-  //     //   console.log(response);
-  //     //   console.log(response.body);
-  //     // });
-
-  //     // const payload: INotificationPayload = { id: ++this.autoIncrement, message };
-  //     return pubSub.publish("NOTIFICATIONS", 2);
-  //   }
 }

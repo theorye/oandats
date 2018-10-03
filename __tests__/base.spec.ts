@@ -1,15 +1,17 @@
-import { sampleFunction } from "../src";
 import { Oanda } from "../src";
 
 const api = new Oanda();
 const accountId = "101-001-1857093-002";
 const transactionId = "16711";
 
+function simpleConsole(value: any) {
+  console.log("in here");
+  console.log(value);
+}
+
 describe("This is a simple test", () => {
   test(`${process.env.OANDA_KEY}`, () => {
     console.log("key", process.env.OANDA_KEY);
-
-    expect(sampleFunction("hello")).toEqual("hellohello");
   });
 
   test.skip("it can get a list of accounts", async () => {
@@ -108,10 +110,10 @@ describe("This is a simple test", () => {
   });
 
   it.skip("can stream transactions", async () => {
-    await api.streamTransactions(accountId);
+    await api.streamTransactions(accountId, simpleConsole);
   });
 
   it("can stream prices", async () => {
-    await api.streamPrice(accountId, { instruments: "GBP_JPY" });
+    await api.streamPrice(accountId, { instruments: "GBP_JPY" }, simpleConsole);
   });
 });

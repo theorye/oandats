@@ -43,12 +43,13 @@ import {
   GetTransactionsRangeParams,
   GetTransactionSinceIdResponse,
   GetPricingResponse
-} from "./definitions";
+} from ".";
 import { ModifyTradeDepedentOrderResponse } from "./definitions/Response/ModifyTradeDepedentOrdersResponse";
 import { ClosePositionParams } from "./definitions/Params/ClosePositionParams.interface";
 import { GetTransactionsRangeResponse } from "./definitions/Response/GetTransactionsRangeResponse.interface";
 import { GetPricingParams } from "./definitions/Params/GetPricingParams.interface";
 import { StreamPriceParams } from "./definitions/Params/StreamPriceParams.interface";
+import { Price, PricingHeartbeat } from "./definitions";
 
 export interface Query {
   [key: string]: string | boolean | number | undefined;
@@ -442,10 +443,11 @@ export class Oanda {
     );
   }
 
-  streamTransactions(accountId: AccountID) {
+  streamTransactions(accountId: AccountID, cb: (res: any) => void) {
     return this.api.stream(
       this.path(["accounts", accountId, "transactions", "stream"], {}, true),
-      this.key
+      this.key,
+      cb
     );
   }
 
@@ -463,14 +465,19 @@ export class Oanda {
     );
   }
 
-  streamPrice(accountId: AccountID, params: StreamPriceParams) {
+  streamPrice(
+    accountId: AccountID,
+    params: StreamPriceParams,
+    cb: (res: any) => void
+  ) {
     return this.api.stream(
       this.path(
         ["accounts", accountId, "pricing", "stream"],
         params ? { ...params } : undefined,
         true
       ),
-      this.key
+      this.key,
+      cb
     );
   }
 
