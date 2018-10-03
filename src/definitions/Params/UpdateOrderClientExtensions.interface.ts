@@ -1,6 +1,6 @@
 import { ClientExtensions } from "../Transaction";
 
-export interface UpdateOrderClientExtensions {
+export interface UpdateOrderClientExtensionsParams {
   //
   // The Client Extensions to update for the Order. Do not set, modify, or
   // delete clientExtensions if your account is associated with MT4.

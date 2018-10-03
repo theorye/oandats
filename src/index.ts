@@ -7,4 +7,3 @@ export function sampleFunction(x: string): string {
 }
 
 export * from "./oanda";
-// export * from "./request";

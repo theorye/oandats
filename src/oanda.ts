@@ -1,55 +1,51 @@
 import { Request } from "./request";
 import {
   AccountsResponse,
+  AccountID,
   AccountResponse,
   AccountSummaryResponse,
+  InstrumentName,
   InstrumentsResponse,
+  ConfigureAccountParams,
   AccountConfigurationResponse,
   AccountChangesResponse,
+  GetCandlesParams,
   CandlesResponse,
+  DateTime,
   OrderBookResponse,
   PositionBookResponse,
+  OrderRequest,
   CreateOrderResponse,
+  GetOrdersParams,
   GetOrdersResponse,
   GetPendingOrdersResponse,
+  OrderSpecifier,
   GetOrderResponse,
   ReplaceOrderResponse,
   CancelOrderResponse,
+  UpdateOrderClientExtensions,
+  GetTradesParams,
   GetTradesResponse,
   GetOpenTradesResponse,
+  TradeSpecifier,
   GetTradeResponse,
+  CloseTradeParams,
   UpdateTradeClientExtensionsResponse,
+  ModifyTradeDependentOrderParams,
+  GetPositionsResponse,
   GetOpenPositionsResponse,
   GetInstrumentPositionResponse,
   ClosePositionResponse,
+  GetTransactionsParams,
   GetTransactionsResponse,
+  TransactionID,
   GetTransactionResponse,
+  GetTransactionsRangeParams,
   GetTransactionSinceIdResponse,
   GetPricingResponse
-} from "./definitions/Response";
-import {
-  InstrumentName,
-  DateTime,
-  DecimalNumber
-} from "./definitions/Primitives";
-import {
-  ConfigureAccountParams,
-  GetCandlesParams,
-  GetOrdersParams,
-  UpdateOrderClientExtensions,
-  GetTradesParams,
-  CloseTradeParams,
-  ModifyTradeDependentOrderParams,
-  GetTransactionsRangeParams
-} from "./definitions/Params";
-import { OrderRequest, OrderSpecifier } from "./definitions/Order";
-import { TradeSpecifier } from "./definitions/Trade";
-import { GetPositionsResponse } from "./definitions/Response/GetPositionsResponse.interface";
+} from "./definitions";
 import { ModifyTradeDepedentOrderResponse } from "./definitions/Response/ModifyTradeDepedentOrdersResponse";
 import { ClosePositionParams } from "./definitions/Params/ClosePositionParams.interface";
-import { GetTransactionsParams } from "./definitions/Params/GetTransactionsParams.interface";
-import { TransactionID } from "./definitions/Transaction";
-import { AccountID } from "./definitions/Account";
 import { GetTransactionsRangeResponse } from "./definitions/Response/GetTransactionsRangeResponse.interface";
 import { GetPricingParams } from "./definitions/Params/GetPricingParams.interface";
 import { StreamPriceParams } from "./definitions/Params/StreamPriceParams.interface";
