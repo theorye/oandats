@@ -114,6 +114,6 @@ describe("This is a simple test", () => {
   });
 
   it("can stream prices", async () => {
-    await api.streamPrice(accountId, { instruments: "GBP_JPY" }, simpleConsole);
+    await api.streamPrice(accountId, { instruments: "GBP_JPY" }, console.log);
   });
 });

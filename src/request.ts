@@ -35,9 +35,14 @@ export class Request {
     }).then(res => {
       return new Promise((resolve, reject) => {
         res.body.on("data", chunk => {
-          const responses = chunk.toString().split(/[\r\n]+/);
+          const responses = chunk
+            .toString()
+            .trim()
+            .split(/[\r\n]+/);
           responses.forEach((element: string) => {
+            console.log(element);
             cb(JSON.parse(element));
+            // cb(element);
           });
         });
 
