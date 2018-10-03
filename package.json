@@ -1,8 +1,9 @@
 {
   "name": "oandats",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "main": "lib/index.js",
+  "types": "lib/index",
   "scripts": {
     "build": "rimraf lib && tsc",
     "test:watch": "jest --watch",
